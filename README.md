@@ -16,7 +16,7 @@ $ npm install eslint-plugin-no-unsafe-regex
 
 ### Plugin
 
-To use the configuration in an `.eslintrc` file,
+To use the [plugin](http://eslint.org/docs/user-guide/configuring#configuring-plugins) in an `.eslintrc` file,
 
 ``` javascript
 {
@@ -39,7 +39,7 @@ where `no-unsafe-regex` is shorthand for `eslint-plugin-no-unsafe-regex`. To con
 }
 ```
 
-where a [plugin](http://eslint.org/docs/user-guide/configuring#configuring-plugins) rule must be prefixed with the plugin name and a `/`; e.g., `no-unsafe-regex/`.
+where a [plugin](http://eslint.org/docs/user-guide/configuring#configuring-plugins) rule must be prefixed with the [plugin](http://eslint.org/docs/user-guide/configuring#configuring-plugins) name and a `/`; e.g., `no-unsafe-regex/<rule>`.
 
 
 ### Module
@@ -69,6 +69,7 @@ console.dir( plugin );
 
 ## Notes
 
+*	In order to use the [plugin](http://eslint.org/docs/user-guide/configuring#configuring-plugins), the plugin __must__ first be installed as a `node_module` dependency.
 *	The plugin __only__ validates [regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) __literals__ and regular expressions created using the [`RegExp`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) constructor and __literal__ arguments.
 
 	``` javascript
