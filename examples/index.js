@@ -1,5 +1,5 @@
 'use strict';
 
-var safe = require( 'safe-regex' );
+var config = require( './config.js' );
 
-console.log( safe( new RegExp( "(.*){1,32000}[bc]" ) ) );
+console.dir( config );

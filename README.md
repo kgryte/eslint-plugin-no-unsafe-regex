@@ -14,6 +14,36 @@ $ npm install eslint-plugin-no-unsafe-regex
 
 ## Usage
 
+### Plugin
+
+To use the configuration in an `.eslintrc` file,
+
+``` javascript
+{
+	'plugins': [
+		'no-unsafe-regex'
+	]
+}
+```
+
+where `no-unsafe-regex` is shorthand for `eslint-plugin-no-unsafe-regex`. To configure plugin rules,
+
+``` javascript
+{
+	'plugins': [
+		'no-unsafe-regex'
+	],
+	'rules': {
+		'no-unsafe-regex/no-unsafe-regex': 2
+	}
+}
+```
+
+where a [plugin](http://eslint.org/docs/user-guide/configuring#configuring-plugins) rule must be prefixed with the plugin name and a `/`; e.g., `no-unsafe-regex/`.
+
+
+### Module
+
 ``` javascript
 var plugin = require( 'eslint-plugin-no-unsafe-regex' );
 ```
@@ -37,10 +67,61 @@ console.dir( plugin );
 ```
 
 
+## Notes
+
+*	The plugin __only__ validates [regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) __literals__ and regular expressions created using the [`RegExp`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) constructor and __literal__ arguments.
+
+	``` javascript
+	var re;
+
+	// Validated:
+	re = /beep/;
+
+	// Validated:
+	re = new RegExp( 'beep', 'i' );
+
+	// Not validated:
+	str = 'beep';
+	re = new RegExp( str, 'i' );
+
+	// Not validated:
+	re = new RegExp( new Array( 5 ).join( 'ab' ) );
+	```
+
+	Validating regular expressions created using non-literal arguments would require reconstructing an execution context, which is beyond the scope of this module. For example, consider
+
+	``` javascript
+	var getStr = require( './path/to/my/string' ),
+		str = getStr();
+
+	var re = new RegExp( str );
+	```
+
+	If the return value of `getStr` is dynamic, validation is impossible.
+
+
+
 ## Examples
 
 ``` javascript
+module.exports = {
+	'env': {
+		'node': true
+	},
+	'plugins': [
+		// Declare the plugin:
+		'no-unsafe-regex'
+	],
+	'rules': {
+		'no-path-concat': 2,
+		'no-process-exit': 0,
+		'no-sync': 1,
+		'no-mixed-requires': [ 2, false ],
 
+		// Prefix a plugin rule with `{{plugin_name}}/`:
+		'no-unsafe-regex/no-unsafe-regex': 2
+	}
+};
 ```
 
 To run the example code from the top-level application directory,
