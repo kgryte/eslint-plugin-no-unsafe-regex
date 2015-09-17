@@ -28,6 +28,9 @@ console.dir( plugin );
 	{
 		'rules': {
 			'no-unsafe-regex': <rule>
+		},
+		'rulesConfig': {
+			'no-unsafe-regex': 2
 		}
 	}
 */
