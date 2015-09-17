@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-no-unsafe-regex",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "ESLint rules to disallow unsafe regular expressions.",
   "author": {
     "name": "Athan Reines",
