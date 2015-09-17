@@ -18,11 +18,11 @@ test = {
 invalid.push( test );
 
 test = {
-	'code': 'var re = new RegExp( new Array( 27 ).join( "a?" ) + new Array( 27 ).join( "a" ) );',
+	'code': 'var re = new RegExp( "a?a?a?a?a?a?a?a?a?a?a?a?a?a?a?a?a?a?a?a?a?a?a?a?a?a?aaaaaaaaaaaaaaaaaaaaaaaaaa", "i" );',
 	'errors': [
 		{
 			'message': 'Unsafe regular expression',
-			'type': 'Literal',
+			'type': 'NewExpression',
 			'line': 1,
 			'column': 10
 		}
@@ -90,19 +90,6 @@ test = {
 			'type': 'CallExpression',
 			'line': 1,
 			'column': 10
-		}
-	]
-};
-invalid.push( test );
-
-test = {
-	'code': 'var str = "(.*){1,32000}[bc]";var re = RegExp( str );',
-	'errors': [
-		{
-			'message': 'Unsafe regular expression',
-			'type': 'CallExpression',
-			'line': 1,
-			'column': 40
 		}
 	]
 };

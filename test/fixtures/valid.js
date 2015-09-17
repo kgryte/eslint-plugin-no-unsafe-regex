@@ -10,7 +10,7 @@ test = {
 valid.push( test );
 
 test = {
-	'code': 'var re = new RegExp( "\\bOakland\\b" );'
+	'code': 'var re = new RegExp( "\\bOakland\\b", "i" );'
 };
 valid.push( test );
 
@@ -35,7 +35,7 @@ test = {
 valid.push( test );
 
 test = {
-	'code': 'var re = new RegExp( new Array( 26 ).join( "a?" ) + new Array( 26 ).join( "a" ) );'
+	'code': 'var re = new RegExp( "a?a?a?a?a?a?a?a?a?a?a?a?a?a?a?a?a?a?a?a?a?a?a?a?a?aaaaaaaaaaaaaaaaaaaaaaaaa" );'
 };
 valid.push( test );
 

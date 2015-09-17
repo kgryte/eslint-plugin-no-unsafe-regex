@@ -7,6 +7,7 @@ var chai = require( 'chai' ),
 	RuleTester = require( 'eslint' ).RuleTester,
 	valid = require( './fixtures/valid.js' ),
 	invalid = require( './fixtures/invalid.js' ),
+	unvalidated = require( './fixtures/unvalidated.js' ),
 	plugin = require( './../lib' );
 
 
@@ -42,12 +43,30 @@ describe( 'eslint-plugin-no-unsafe-regex', function tests() {
 		assert.strictEqual( plugin.rulesConfig[ 'no-unsafe-regex' ], 2 );
 	});
 
-	it( 'should properly validate regular expressions', function test() {
+	it( 'should positively validate regular expressions', function test() {
 		var tester = new RuleTester();
 
 		tester.run( 'no-unsafe-regex', plugin.rules[ 'no-unsafe-regex' ], {
 			'valid': valid,
+			'invalid': []
+		});
+	});
+
+	it( 'should negatively validate regular expressions', function test() {
+		var tester = new RuleTester();
+
+		tester.run( 'no-unsafe-regex', plugin.rules[ 'no-unsafe-regex' ], {
+			'valid': [],
 			'invalid': invalid
+		});
+	});
+
+	it( 'should not validate regular expressions created using non-literals', function test() {
+		var tester = new RuleTester();
+
+		tester.run( 'no-unsafe-regex', plugin.rules[ 'no-unsafe-regex' ], {
+			'valid': unvalidated,
+			'invalid': []
 		});
 	});
 
