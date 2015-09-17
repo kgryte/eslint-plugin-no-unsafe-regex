@@ -69,7 +69,7 @@ console.dir( plugin );
 
 ## Notes
 
-*	In order to use the [plugin](http://eslint.org/docs/user-guide/configuring#configuring-plugins), the plugin __must__ first be installed as a `node_module` dependency.
+*	In order to use the [plugin](http://eslint.org/docs/user-guide/configuring#configuring-plugins), the plugin __must__ first be installed as a `node_modules` dependency.
 *	The plugin __only__ validates [regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) __literals__ and regular expressions created using the [`RegExp`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) constructor and __literal__ arguments.
 
 	``` javascript
